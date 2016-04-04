@@ -1,0 +1,1501 @@
+<skin>
+	<!-- ########### MENU SECTION ############ -->
+	<!-- (OK) Menu Template -->
+	<screen name="ScreenMenuTemplate">
+		<panel name="GenericLayoutFullTemplate"/>
+		<!-- panel name="SmallPigTemplate" /-->
+		<!-- menu list -->
+ 		<widget source="menu" render="Listbox" position="50,100" zPosition="2" size="535,520" scrollbarMode="showOnDemand" enableWrapAround="1" transparent="1">
+ 			<convert type="TemplatedMultiContent">
+ 			{
+ 				"template": [
+ 					MultiContentEntryText(pos = (10, 5), size = (520, 40), flags = RT_HALIGN_LEFT, text = 0)
+ 				],
+ 				"fonts": [gFont("Regular", 24)],
+ 				"itemHeight": 40
+ 			}
+ 			</convert>
+ 		</widget>
+		<!-- eLabel name="DEBUG"  text="PANEL T001" position="20,20" size="300,60" font="Regular;40"  foregroundColor="red" backgroundColor="#10202020" transparent="1" zPosition="99"/-->
+	</screen>
+
+	<!-- (OK) Menu -->
+	<screen name="Menu" position="0,0" size="1280,720"  title="Menu" flags="wfNoBorder">
+		<panel name="ScreenMenuTemplate"/>
+		<!-- Timers Menu -->
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_timer_auto.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">autotimer_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_timer_cron.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">crontimer_edit</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_timers.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">timer_edit</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_timer_power.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">powertimer_edit</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Settings for the AutoTimers." position="610,474" zPosition="1" size="340,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">autotimer_setup</convert>
+			<convert type="ConditionalShowHide"/>			
+		</widget>
+		<widget source="menu" render="FixedLabel" text="CronTimers Editor." position="610,474" zPosition="1" size="340,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">crontimer_edit</convert>
+			<convert type="ConditionalShowHide"/>			
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Timers settings, list, location, etc." position="610,474" zPosition="1" size="340,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">timer_edit</convert>
+			<convert type="ConditionalShowHide"/>			
+		</widget>
+		<widget source="menu" render="FixedLabel" text="All the settings for your Power Timer." position="610,474" zPosition="1" size="340,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">powertimer_edit</convert>
+			<convert type="ConditionalShowHide"/>			
+		</widget>
+		<!-- TV Menu -->
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_service_searching.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">service_searching_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_av.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">av_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_timeshift.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">timshift_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_record.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">recording_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_epg_setup.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">epg_menu</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_ci_menu.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">cam_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_flag_auto.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">autolanguage_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_channel_auto.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">channelselection_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Tuner Configuration" position="610,412" zPosition="1" size="340,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">service_searching_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-AutoBouquetsMaker" position="610,440" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">service_searching_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Automatic Scan" position="610,468" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">service_searching_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Blind Scan" position="610,496" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">service_searching_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Manual Scan" position="610,524" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">service_searching_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Satfinder" position="610,552" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">service_searching_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Positioner setup" position="610,580" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">service_searching_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Select here all the Audio and Video setup of your box." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">av_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="All the settings for your timeshift here." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">timshift_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="All the recording and playback settings inside this menu." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">recording_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Settings..." position="610,440" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">epg_menu</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Load/Save" position="610,468" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">epg_menu</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-MultiEPG settings" position="610,496" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">epg_menu</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-SingleEPG settings" position="610,524" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">epg_menu</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-GraphicalEPG settings" position="610,552" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">epg_menu</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-CrossEPG" position="610,580" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">epg_menu</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Common interface" position="610,524" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">cam_setup</convert>
+			<convert type="ConditionalShowHide"/>			
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-CI PIN Setup" position="610,552" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">cam_setup</convert>
+			<convert type="ConditionalShowHide"/>			
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-CI assignment" position="610,580" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">cam_setup</convert>
+			<convert type="ConditionalShowHide"/>			
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Auto language selection for audio and subtitles." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">autolanguage_setup</convert>
+			<convert type="ConditionalShowHide"/>			
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Settings for the channel selection, display and numbers, picons, etc." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">channelselection_setup</convert>
+			<convert type="ConditionalShowHide"/>			
+		</widget>
+		<!-- User Menu -->
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_oled.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">display_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_usage.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">usage_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>		
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_user_infobar.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">user_interface</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_user_3d_setup.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">osd3dsetup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_position.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">osdsetup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_video_enhancement.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">videoenhancement_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_user_skin_setup.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">skin_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_animation.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">animation_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Display settings" position="610,524" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">display_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+			<widget source="menu" render="FixedLabel" text="-Skin setup" position="610,552" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">display_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+			<widget source="menu" render="FixedLabel" text="-LCD4Linux" position="610,580" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">display_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>		
+		<widget source="menu" render="FixedLabel" text="Choose and customize here different setup of your box menu or other." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">usage_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Choose all the 3D setup in this menu." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">osd3dsetup</convert>
+			<convert type="ConditionalShowHide"/>			
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Here you can enhance video display, clean and sharp, brightness and contrast, noise reduction, etc." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">videoenhancement_setup</convert>
+			<convert type="ConditionalShowHide"/>			
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Select the infobar settings in this menu." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">user_interface</convert>
+			<convert type="ConditionalShowHide"/>			
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Here you can select the position of the OSD." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">osdsetup</convert>
+			<convert type="ConditionalShowHide"/>			
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Select the skin for your box in this menu." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">skin_setup</convert>
+			<convert type="ConditionalShowHide"/>			
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Here you can select different animations of your OSD." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">animation_setup</convert>
+			<convert type="ConditionalShowHide"/>			
+		</widget>
+		<!-- Front display Menu -->
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_oled_setup.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">display_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_user_skin_setup.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">lcd_skin_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_lcd4linux.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">lcd4linux</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="This option sets the brightness and contrast display." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">display_setup</convert>
+			<convert type="ConditionalShowHide"/>			
+		</widget>
+		<widget source="menu" render="FixedLabel" text="You can change the front display skin of your box here." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">lcd_skin_setup</convert>
+			<convert type="ConditionalShowHide"/>			
+		</widget>
+		<widget source="menu" render="FixedLabel" text="You can change the settings of your lcd display and add many options." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">lcd4linux</convert>
+			<convert type="ConditionalShowHide"/>			
+		</widget>
+			<!-- Epg Menu -->
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_epg_sub_setup.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">epg_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_epg_load_save.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">epgloadsave_menu</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_epg_multi_setup.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">setup_epgmulti</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_epg_single_setup.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">setup_epgenhanced</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_epg_graph_setup.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">setup_epggraphical</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_epg_cross.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">crossepg</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Select the EPG settings here." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">epg_setup</convert>
+			<convert type="ConditionalShowHide"/>			
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Load and Save here all the EPG." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">epgloadsave_menu</convert>
+			<convert type="ConditionalShowHide"/>			
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Select the settings of the MultiEPG." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">setup_epgmulti</convert>
+			<convert type="ConditionalShowHide"/>			
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Select the settings of the SingleEPG." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">setup_epgenhanced</convert>
+			<convert type="ConditionalShowHide"/>			
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Select the settings of the Graphical EPG." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">setup_epggraphical</convert>
+			<convert type="ConditionalShowHide"/>			
+		</widget>
+		<widget source="menu" render="FixedLabel" text="You can find here all the settings for CrossEPG tool." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">crossepg</convert>
+			<convert type="ConditionalShowHide"/>			
+		</widget>
+		<!-- CI Menu -->
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_ci_setup.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">ci_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_ci_pin.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">ci_pin_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_ci_assignment.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">ci_assign</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Select all the common interface settings here." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">ci_setup</convert>
+			<convert type="ConditionalShowHide"/>			
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Select the PIN settings in this menu." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">ci_pin_setup</convert>
+			<convert type="ConditionalShowHide"/>			
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Assign the good common interface to the good slot." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">ci_assign</convert>
+			<convert type="ConditionalShowHide"/>			
+		</widget>
+		<!-- eLabel name="DEBUG"  text="PANEL T002" position="20,20" size="300,60" font="Regular;40"  foregroundColor="red" backgroundColor="#10202020" transparent="1" zPosition="99"/-->
+	</screen>
+	
+	<!-- (OK) MainMenu -->
+	<screen name="menu_mainmenu" position="0,0" size="1280,720" title="Main Menu"  flags="wfNoBorder">
+		<panel name="ScreenMenuTemplate"/>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_mediaplayer.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">media_player</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_timer.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">timer_menu</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_panegami.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">egami_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_file.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">filecommand</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_multiboot.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">egami_boot</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_news.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">EGAMINews</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_radio.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">internet_radio</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_emulator.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">emu</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_emulator.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">cs</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_info.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">info_screen</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_plugin.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">plugin_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_script.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">scripts</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_setup.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">setup_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_shutdown.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">standby_restart_list</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_setup.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">dmc_mainmenu</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_pictures.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">picture_player</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+ 		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_dvd_player.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">dvd_player</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+ 		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_setup.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">scart_switch</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="You can find here our main Panel EGAMI." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">egami_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Manage all your files from this menu." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">filecommand</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Install and set the multiboot tool." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">egami_boot</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="All the news about our image." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">EGAMINews</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="listen all your favorites internet-radio here." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">internet_radio</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="You can read the pictures inside this menu." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">picture_player</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-AutoTimers" position="610,496" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">timer_menu</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-CronTimers" position="610,524" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">timer_menu</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Timers" position="610,552" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">timer_menu</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-PowerTimers" position="610,580" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">timer_menu</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-TV menu" position="610,440" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">setup_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-System" position="610,468" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">setup_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-List of Storage Devices" position="610,496" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">setup_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Parental control" position="610,524" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">setup_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Factory reset" position="610,552" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">setup_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Software Management" position="610,580" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">setup_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Deep Standby" position="610,468" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">standby_restart_list</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Standby" position="610,496" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">standby_restart_list</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Sleep Timer" position="610,524" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">standby_restart_list</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Restart" position="610,552" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">standby_restart_list</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Restart GUI" position="610,580" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">standby_restart_list</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="This show the list of plug-ins you have installed." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">plugin_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-EGAMI FAQ" position="610,440" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">info_screen</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-About" position="610,468" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">info_screen</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Devices" position="610,496" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">info_screen</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Memory" position="610,524" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">info_screen</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>		
+		<widget source="menu" render="FixedLabel" text="-Network" position="610,552" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">info_screen</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Service" position="610,580" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">info_screen</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="This box can play various of multimedia file formats." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">media_player</convert>
+			<convert type="ConditionalShowHide"/>			
+		</widget>
+		<!-- eLabel name="DEBUG"  text="PANEL T003" position="20,20" size="300,60" font="Regular;40"  foregroundColor="red" backgroundColor="#10202020" transparent="1" zPosition="99"/-->
+	</screen>
+
+	<!-- (OK) Menu Setup -->
+	<screen name="menu_setup" position="0,0" size="1280,720" title="Main Menu Setup"  flags="wfNoBorder">
+		<panel name="ScreenMenuTemplate"/>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_tv.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">tv_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_system.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">system_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_storage.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">hardisk_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_parental.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">parental_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_app.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">software_manager</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_reset.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">factory_reset</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_update.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">software_update</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Service searching" position="610,384" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">tv_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-A/V settings" position="610,412" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">tv_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Timeshift settings" position="610,440" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">tv_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Recording and playback settings" position="610,468" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">tv_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-EPG settings" position="610,496" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">tv_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Common interface" position="610,524" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">tv_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Auto language selection" position="610,552" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">tv_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Channel selection settings" position="610,580" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">tv_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-User interface / Language" position="610,412" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">system_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Network / Time Settings" position="610,440" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">system_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Subtitle settings" position="610,468" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">system_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Hdmi CEC" position="610,496" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">system_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Quick button setup" position="610,524" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">system_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Keyboard / Remote" position="610,552" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">system_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Temperature and fan control" position="610,580" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">system_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Hard disk setup" position="610,496" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">hardisk_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Initialization" position="610,524" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">hardisk_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-USB Disk Format" position="610,580" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">hardisk_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>	
+		<widget source="menu" render="FixedLabel" text="-Filesystem Check" position="610,552" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">hardisk_selection</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Activate Parental control and setup." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">parental_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Warning, if you do a factory reset, you will lose ALL your configuration data." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">factory_reset</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Manage all your applications here, updates, backup, extension install, etc." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">software_manager</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Check if updates available, open Software Update menu." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">software_update</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<!-- eLabel name="DEBUG"  text="PANEL T004" position="20,20" size="300,60" font="Regular;40"  foregroundColor="red" backgroundColor="#10202020" transparent="1" zPosition="99"/-->
+	</screen>
+
+	<!-- (OK) Menu Scan Channel -->
+	<screen name="menu_scan" position="0,0" size="1280,720" title="Main Menu Channel Scan" flags="wfNoBorder">
+		<panel name="ScreenMenuTemplate"/>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_tuner_setup.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">tuner_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_tuner_autobouquet.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">autobouquetsmakermaker</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_tuner_scanauto.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">auto_scan</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_tuner_scanblind.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">blindscan</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_tuner_scanmanu.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">manual_scan</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_tuner_satfinder.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">satfinder</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_cable.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">cablescan</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_tuner_positioner.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">positioner_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Select the tuner settings here." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">tuner_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="This tool can help you to make automaticliy some new bouquets." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">autobouquetsmakermaker</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Scan all your services on all the satellites automaticliy." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">auto_scan</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Scan very exaustive of all your services on every satellites." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">blindscan</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Scan all your services on all the satellites manually." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">manual_scan</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Check the SatFinder on all you LNB here." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">satfinder</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Scan all your services on the cable." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">cablescan</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Select the positioner setting in this menu." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">positioner_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>	
+		<!-- eLabel name="DEBUG"  text="PANEL T005" position="20,20" size="360,60" font="Regular;40"  foregroundColor="red" backgroundColor="#10202020" transparent="1" zPosition="99"/-->
+	</screen>
+
+	<!-- (OK) Menu System -->
+	<screen name="menu_system" position="0,0" size="1280,720" title="Main Menu System"  flags="wfNoBorder">
+		<panel name="ScreenMenuTemplate"/>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_user.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">osd_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_flag.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">language_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_net.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">network_menu</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_time.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">time_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_subtitle.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">subtitle_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_hdmi.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">hdmicec</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_quikb.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">hotkey_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_keyboard.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">keyboard_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_in_device.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">input_device_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_remote.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">remotecontrolcode</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_fan.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">tempfancontrol</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Front Display Panel" position="610,412" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">osd_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Custom" position="610,440" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">osd_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Infobar settings" position="610,468" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">osd_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-3D Setup" position="610,496" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">osd_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-OSD position setup" position="610,524" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">osd_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Skin setup" position="610,552" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">osd_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Animations" position="610,580" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">osd_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Select here the language of your box." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">language_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Device Setup" position="610,496" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">network_menu</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Mounts Setup" position="610,524" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">network_menu</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-FTP, Inadyn, etc. settings" position="610,552" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">network_menu</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="-Remote Tuner Server Setup" position="610,580" zPosition="1" size="360,24" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">network_menu</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Configure NTP server, Synchronize system time using transponder or internet, Setup your timezone." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">time_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Configure here all your subtitle settings." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">subtitle_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Configure here your compatible equipment connected to HDMI for sending commands from one device to another." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">hdmicec</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="You can setup here what buttons should do." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">hotkey_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Select Keyboard map here." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">keyboard_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="You can setup here your input devices." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">input_device_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Select remote code in this menu." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">remotecontrolcode</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="All you have ever dream about to set your Fan." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">tempfancontrol</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<!-- eLabel name="DEBUG"  text="PANEL T006" position="20,20" size="300,60" font="Regular;40"  foregroundColor="red" backgroundColor="#10202020" transparent="1" zPosition="99"/-->
+	</screen>
+
+	<!-- (OK) Menu HDD -->
+	<screen name="menu_harddisk" position="0,0" size="1280,720" title="Main Menu HDD"  flags="wfNoBorder">
+		<panel name="ScreenMenuTemplate"/>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_hdd_setup.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">harddisk_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_hdd_init.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">harddisk_init</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_usb_disk.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">usbdisk_init</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_hdd_check.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">harddisk_check</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_hdd_convert.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">harddisk_convert</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Select your Harddisk Setup in this menu." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">harddisk_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Initializing storage device here." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">harddisk_init</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Initializing storage usb device here." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">usbdisk_init</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="You can check your device here." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">harddisk_check</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Convert the device format here." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">harddisk_convert</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<!-- eLabel name="DEBUG"  text="PANEL T007" position="20,20" size="300,60" font="Regular;40"  foregroundColor="red" backgroundColor="#10202020" transparent="1" zPosition="99"/-->
+	</screen>
+
+	<!-- (OK) Menu Information -->
+	<screen name="menu_information" position="0,0" size="1280,720" title="Menu Information" flags="wfNoBorder">
+		<panel name="ScreenMenuTemplate"/>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_info_faq.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">EGAMIFaq_YTChannel</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_info_about.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">about_screen</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_info_devices.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">device_screen</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_info_memory.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">memory_screen</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_info_net.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">network_screen</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_info_service.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">service_info_screen</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="The Online channel EGAMI FAQ." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">EGAMIFaq_YTChannel</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>	
+		<widget source="menu" render="FixedLabel" text="About your box, all the informations." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">about_screen</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>	
+		<widget source="menu" render="FixedLabel" text="All the informations about the devices installed in your box." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">device_screen</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>	
+		<widget source="menu" render="FixedLabel" text="The memory usage of your box." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">memory_screen</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>	
+		<widget source="menu" render="FixedLabel" text="All the informations about the Network." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">network_screen</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>	
+		<widget source="menu" render="FixedLabel" text="All the informations about the current service." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">service_info_screen</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>			
+		<!-- eLabel name="DEBUG"  text="PANEL T008" position="20,20" size="300,60" font="Regular;40"  foregroundColor="red" backgroundColor="#10202020" transparent="1" zPosition="99"/-->
+	</screen>
+
+	<!-- (OK) Menu ShutDown -->
+	<screen name="menu_shutdown" position="0,0" size="1280,720" title="Menu ShutDown"  flags="wfNoBorder">
+		<panel name="ScreenMenuTemplate"/>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_standby.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">standby</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_restart.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">restart</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_restart_e2.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">restart_enigma</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_deep_standby.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">deep_standby</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_timer_power.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">sleep</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Press this button to put your box in standby." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">standby</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>		
+		<widget source="menu" render="FixedLabel" text="Press this button to restart your box." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">restart</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>		
+		<widget source="menu" render="FixedLabel" text="Press this button to restart enigma2 (restart GUI)." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">restart_enigma</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>		
+		<widget source="menu" render="FixedLabel" text="Press this button to put your box in deep standby." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">deep_standby</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Press this button to set sleep time of your box." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">sleep</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<!-- eLabel name="DEBUG"  text="PANEL T009" position="20,20" size="300,60" font="Regular;40"  foregroundColor="red" backgroundColor="#10202020" transparent="1" zPosition="99"/-->
+	</screen>
+
+	<!-- (OK) Menu Network -->
+	<screen name="menu_network" position="0,0" size="1280,720" title="Network"  flags="wfNoBorder">
+		<panel name="ScreenMenuTemplate"/>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_network_setup.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">device_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_network_mount.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">netmounts_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_network_afp.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">netafp_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_network_ftp.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">netftp_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_network_inadyn.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">Inadyn_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_network_dlna.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">minidlna_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_network_nfs.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">netnfs_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_network_vpn.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">netvpn_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_network_sab.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">netsabnzbd_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_network_samba.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">netsmba_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_network_telnet.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">nettelnet_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_network_ushare.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">netushare_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="Pixmap" pixmap="mega32/menu/ico_network_rts.png" position="940,455" size="256,256" alphatest="blend" transparent="1" zPosition="1">
+			<convert type="MenuEntryCompare">netrts_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="menu" render="FixedLabel" text="Network device setup in this menu." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">device_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>	
+		<widget source="menu" render="FixedLabel" text="Network mountage setup in this menu." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">netmounts_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>			
+		<widget source="menu" render="FixedLabel" text="Network AFP setup in this menu." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">netafp_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>	
+		<widget source="menu" render="FixedLabel" text="Network FTP setup in this menu." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">netftp_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>	
+		<widget source="menu" render="FixedLabel" text="Network Inadyn setup in this menu." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">Inadyn_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>	
+		<widget source="menu" render="FixedLabel" text="Network MiniDLNA setup in this menu." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">minidlna_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>	
+		<widget source="menu" render="FixedLabel" text="Network NFS setup in this menu." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">netnfs_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>			
+		<widget source="menu" render="FixedLabel" text="Network VPN setup in this menu." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">netvpn_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>	
+		<widget source="menu" render="FixedLabel" text="Network SABnzbd setup in this menu." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">netsabnzbd_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>	
+		<widget source="menu" render="FixedLabel" text="Network SAMBA setup in this menu." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">netsmba_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>			
+		<widget source="menu" render="FixedLabel" text="Network Telnet setup in this menu." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">nettelnet_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>			
+		<widget source="menu" render="FixedLabel" text="Network Ushare setup in this menu." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">netushare_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>			
+		<widget source="menu" render="FixedLabel" text="Remote Tuner Server setup in this menu." position="610,474" zPosition="1" size="360,130" font="Regular;22" halign="left" foregroundColor="bluette" backgroundColor="black" transparent="1">
+			<convert type="MenuEntryCompare">netrts_setup</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>			
+		<!-- eLabel name="DEBUG"  text="PANEL T010" position="20,20" size="300,60" font="Regular;40"  foregroundColor="red" backgroundColor="#10202020" transparent="1" zPosition="99"/-->
+	</screen>
+
+	<!-- ########### TEMPLATE SECTION ############ -->
+
+	<!-- Full Template -->
+	<screen name="GenericLayoutFullTemplate">
+		<ePixmap  position="0,0" zPosition="-1" size="1280,720" pixmap="mega32blue/menu/panel.png" alphatest="on" transparent="1"/>
+		<!-- Date -->
+		<widget source="global.CurrentTime" render="Label" position="610,625" size="120,26" zPosition="2" font="Regular;20"  backgroundColor="transpBlack" foregroundColor="#808080" transparent="1">
+			<convert type="ClockToText">Format:%d.%m.%Y</convert>
+		</widget>
+		<!-- Time -->
+		<ePixmap position="728,629" zPosition="2" size="22,22" pixmap="mega32/icons/clock.png" alphatest="on"/>
+		<widget source="global.CurrentTime" render="Label" position="755,625" size="90,26" zPosition="4" font="Regular;20"  backgroundColor="black" foregroundColor="#808080" transparent="1">
+			<convert type="ClockToText">Format:%H:%M:%S</convert>
+		</widget>	
+		<widget source="Title" render="Label" zPosition="1" position="40,46" size="560,30" halign="center" font="Head;24" foregroundColor="bluette" transparent="1" backgroundColor="transpBlack"/>
+	</screen>
+
+	<!-- Full Template W -->
+	<screen name="GenericLayoutFullTemplateW">
+		<ePixmap  position="0,0" zPosition="-1" size="1280,720" pixmap="mega32blue/menu/panelwd.png" alphatest="on" transparent="1"/>
+		<!-- Time -->
+		<ePixmap position="828,629" zPosition="2" size="22,22" pixmap="mega32/icons/clock.png" alphatest="on"/>
+		<widget source="global.CurrentTime" render="Label" position="855,625" size="90,26" zPosition="4" font="Regular;20"  backgroundColor="black" foregroundColor="#808080" transparent="1">
+			<convert type="ClockToText">Format:%H:%M:%S</convert>
+		</widget>	
+		<widget source="Title" render="Label" zPosition="1" position="40,46" size="770,30" halign="center" font="Head;24" foregroundColor="bluette" transparent="1" backgroundColor="transpBlack"/>
+	</screen>
+
+	<!-- Full Template WC -->
+	<screen name="GenericLayoutFullTemplateWC">
+		<ePixmap  position="0,0" zPosition="-1" size="1280,720" pixmap="mega32blue/menu/panelwd.png" alphatest="on" transparent="1"/>
+		<!-- Date -->
+		<widget source="global.CurrentTime" render="Label" position="828,625" size="120,26" zPosition="2" font="Regular;20"  backgroundColor="transpBlack" foregroundColor="#808080" transparent="1">
+			<convert type="ClockToText">Format:%d.%m.%Y</convert>
+		</widget>
+		<!-- Time -->
+		<ePixmap position="946,629" zPosition="2" size="22,22" pixmap="mega32/icons/clock.png" alphatest="on"/>
+		<widget source="global.CurrentTime" render="Label" position="973,625" size="90,26" zPosition="4" font="Regular;20"  backgroundColor="black" foregroundColor="#808080" transparent="1">
+			<convert type="ClockToText">Format:%H:%M:%S</convert>
+		</widget>	
+		<widget source="Title" render="Label" zPosition="1" position="40,46" size="770,30" halign="center" font="Head;24" foregroundColor="bluette" transparent="1" backgroundColor="transpBlack"/>
+	</screen>
+
+	<!-- Mid Template -->
+	<screen name="GenericLayoutMidTemplate">
+		<ePixmap  position="0,0" zPosition="-1" size="1280,720" pixmap="mega32blue/menu/panelw.png" alphatest="on" transparent="1"/>
+		<widget source="global.CurrentTime" render="Label" position="700,45" size="460,26" zPosition="5" font="Regular;22" halign="center" noWrap="1" transparent="1" foregroundColor="white" backgroundColor="background">
+			<convert type="ClockToText">Format:%a %e-%b-%Y %H:%M</convert>
+		</widget>
+		<widget source="Title" render="Label" zPosition="1" position="40,45" size="560,24" halign="center" font="Regular;22" foregroundColor="white" transparent="1" backgroundColor="transpBlack"/>
+	</screen>
+
+	<!-- Wide Template -->
+	<screen name="GenericLayoutWideTemplate">
+		<ePixmap  position="0,0" zPosition="-1" size="1280,720" pixmap="mega32blue/menu/panelw.png" alphatest="on" transparent="1"/>
+		<widget source="global.CurrentTime" render="Label" position="700,45" size="460,26" zPosition="5" font="Regular;22" halign="center" noWrap="1" transparent="1" foregroundColor="white" backgroundColor="background">
+			<convert type="ClockToText">Format:%a %e-%b-%Y %H:%M</convert>
+		</widget>
+		<widget source="Title" render="Label" zPosition="2" position="60,45" size="1140,40" halign="left" font="Head; 24" foregroundColor="bluette" transparent="1" backgroundColor="black"/>
+	</screen>
+
+	<!-- Description Template -->
+	<screen name="descTemplate">
+		<eLabel position="610,390" size="630,2" backgroundColor="#20101010" zPosition="2"/>
+		<ePixmap pixmap="mega32/icons/info.png" position="610,410" size="50,50" zPosition="2" alphatest="blend"/>
+		<ePixmap pixmap="mega32/menu/ico_egami.png" position="1010,490" size="256,256" zPosition="2" alphatest="blend"/>
+	</screen>
+
+	<!-- Description Template Lite -->
+	<screen name="descTemplateLite">
+		<eLabel position="830,390" size="410,2" backgroundColor="#20101010" zPosition="2"/>
+		<ePixmap pixmap="mega32/icons/info.png" position="830,410" size="50,50" zPosition="2" alphatest="blend"/>
+		<ePixmap pixmap="mega32/menu/ico_egami.png" position="1010,490" size="256,256" zPosition="2" alphatest="blend"/>
+	</screen>
+
+	<!-- Wizard Template -->
+	<screen name="GenericLayoutWizardTemplate">
+		<ePixmap position="0,0" zPosition="-1" size="1280,720" pixmap="mega32blue/menu/panelwd.png" alphatest="on" transparent="1"/>
+		<ePixmap position="60,100" size="140,140" pixmap="mega32/skin_default/wizard.png" alphatest="blend"/>
+		<widget name="rc" position="990,100" size="154,550" pixmaps="skin_default/rc.png" zPosition="10" alphatest="blend"/>
+		<ePixmap position="890,0" size="320,720" pixmap="mega32blue/menu/picwiz.png"/>
+	</screen>
+
+	<!-- Help Template -->
+	<screen name="GenericLayoutHelpTemplate">
+		<ePixmap position="0,0" zPosition="-1" size="1280,720" pixmap="mega32blue/menu/panelwd.png" alphatest="on" transparent="1"/>
+		<widget name="rc" position="990,100" size="154,550" pixmaps="skin_default/rc.png" zPosition="10" alphatest="blend"/>
+		<ePixmap position="890,0" size="320,720" pixmap="mega32blue/menu/picwiz.png"/>
+	</screen>
+	
+	<!-- Pig Template -->
+	<screen name="SmallPigTemplate">
+		<ePixmap position="820,70" size="600,325" pixmap="mega32blue/menu/tv.png" zPosition="4" alphatest="blend"/>
+		<eLabel position="821,71"  size="598,25"  backgroundColor="#30000000" zPosition="2"/>
+		<widget source="session.Event_Now" render="Label" position="920,74" size="220,26" zPosition="5" halign="center" font="Regular;20"  foregroundColor="white" backgroundColor="#20000000" transparent="1" noWrap="1">
+			<convert type="EventName">Name</convert>
+		</widget>
+		<!-- Widget Pig -->
+		<widget source="session.VideoPicture" render="Pig" position="825,75" size="420,228" zPosition="2" backgroundColor="#df0b1300"/>
+		<widget source="session.CurrentService" render="Label" position="825,32" size="400,30" zPosition="5" font="Regular;26" halign="left" noWrap="1" transparent="1" foregroundColor="#404040" backgroundColor="background">
+			<convert type="ServiceName">NameOnly</convert>
+		</widget>
+		<!-- Event Now -->
+		<widget source="session.Event_Now" render="Label" position="828,278" size="80,26" zPosition="5" halign="left"  font="Regular;20" foregroundColor="white" backgroundColor="#20000000" transparent="1">
+			<convert type="EventTime">StartTime</convert>
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="session.Event_Now" render="Label" position="1105,278" size="125,26" zPosition="5" halign="right"  font="Regular;20" foregroundColor="white" backgroundColor="#20000000" transparent="1">
+			<convert type="EventTime">EndTime</convert>
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<!-- Progress Bar -->
+		<eLabel position="890,288" size="280,2" backgroundColor="#10303030" zPosition="2"/>
+		<widget source="session.Event_Now" render="Progress" pixmap="mega32/bars/p_bar.png" position="890,288" size="280,2" zPosition="5" transparent="1">
+			<convert type="EventTime">Progress</convert>
+		</widget>
+	</screen>
+
+	<!-- Buttons Template -->
+	<screen name="5Buttons">
+		<ePixmap position="50,659" size="1200,50" pixmap="mega32/buttons/5colors.png" zPosition="2" alphatest="blend"/>
+		<widget position="100,668" size="210,21" name="key_red"    font="Regular;19" halign="left" foregroundColor="white" backgroundColor="black" zPosition="1" transparent="1"/>
+		<widget position="340,668" size="210,21" name="key_green"  font="Regular;19" halign="left" foregroundColor="white" backgroundColor="black" zPosition="1" transparent="1"/>
+		<widget position="580,668" size="210,21" name="key_yellow" font="Regular;19" halign="left" foregroundColor="white" backgroundColor="black" zPosition="1" transparent="1"/>
+		<widget position="820,668" size="210,21" name="key_blue"   font="Regular;19" halign="left" foregroundColor="white" backgroundColor="black" zPosition="1" transparent="1"/>
+	</screen>
+
+	<screen name="4Buttons">
+		<ePixmap position="50,659" size="1200,50" pixmap="mega32/buttons/4colors.png" zPosition="2" alphatest="blend"/>
+		<widget position="100,668" size="210,21" name="key_red"    font="Regular;19" halign="left" foregroundColor="white" backgroundColor="black" zPosition="1" transparent="1"/>
+		<widget position="340,668" size="210,21" name="key_green"  font="Regular;19" halign="left" foregroundColor="white" backgroundColor="black" zPosition="1" transparent="1"/>
+		<widget position="580,668" size="210,21" name="key_yellow" font="Regular;19" halign="left" foregroundColor="white" backgroundColor="black" zPosition="1" transparent="1"/>
+		<widget position="820,668" size="210,21" name="key_blue"   font="Regular;19" halign="left" foregroundColor="white" backgroundColor="black" zPosition="1" transparent="1"/>
+	</screen>
+
+	<screen name="4Buttons2">
+		<ePixmap position="50,659" size="1200,50" pixmap="mega32/buttons/4colors.png" zPosition="2" alphatest="blend"/>
+		<widget position="100,668" size="210,21" name="red"    font="Regular;19" halign="left" backgroundColor="black" transparent="1" zPosition="1"/>
+		<widget position="340,668" size="210,21" name="green"  font="Regular;19" halign="left" backgroundColor="black" transparent="1" zPosition="1"/>
+		<widget position="580,668" size="210,21" name="yellow" font="Regular;19" halign="left" backgroundColor="black" transparent="1" zPosition="1"/>
+		<widget position="820,668" size="210,21" name="blue"   font="Regular;19" halign="left" backgroundColor="black" transparent="1" zPosition="1"/>
+	</screen>
+
+	<screen name="4Buttons3">
+		<ePixmap position="50,659" size="1200,50" pixmap="mega32/buttons/4colors.png" zPosition="2" alphatest="blend"/>
+		<widget position="100,668" size="210,21" source="red" render="Label" font="Regular;19" halign="left" backgroundColor="black" transparent="1" zPosition="1"/>
+		<widget position="340,668" size="210,21" source="green" render="Label"  font="Regular;19" halign="left" backgroundColor="black" transparent="1" zPosition="1"/>
+		<widget position="580,668" size="210,21" source="yellow" render="Label" font="Regular;19" halign="left" backgroundColor="black" transparent="1" zPosition="1"/>
+		<widget position="820,668" size="210,21" source="blue" render="Label"   font="Regular;19" halign="left" backgroundColor="black" transparent="1" zPosition="1"/>
+	</screen>
+
+	<screen name="4Buttons4">
+		<ePixmap position="50,659" size="1200,50" pixmap="mega32/buttons/4colors.png" zPosition="2" alphatest="blend"/>
+		<widget position="100,668" size="210,21" source="key_red" render="Label" font="Regular;19" halign="left" backgroundColor="black" transparent="1" zPosition="1"/>
+		<widget position="340,668" size="210,21" source="key_green" render="Label"  font="Regular;19" halign="left" backgroundColor="black" transparent="1" zPosition="1"/>
+		<widget position="580,668" size="210,21" source="key_yellow" render="Label" font="Regular;19" halign="left" backgroundColor="black" transparent="1" zPosition="1"/>
+		<widget position="820,668" size="210,21" source="key_blue" render="Label"   font="Regular;19" halign="left" backgroundColor="black" transparent="1" zPosition="1"/>
+	</screen>
+
+	<screen name="3Buttons">
+		<ePixmap position="50,659" size="900,50" pixmap="mega32/buttons/3colors.png" zPosition="2" alphatest="blend"/>
+		<widget position="100,668" size="210,21" name="key_red"    font="Regular;19" halign="left" foregroundColor="white" backgroundColor="black" zPosition="1" transparent="1"/>
+		<widget position="340,668" size="210,21" name="key_green"  font="Regular;19" halign="left" foregroundColor="white" backgroundColor="black" zPosition="1" transparent="1"/>
+		<widget position="580,668" size="210,21" name="key_yellow" font="Regular;19" halign="left" foregroundColor="white" backgroundColor="black" zPosition="1" transparent="1"/>
+	</screen>
+
+	<screen name="3Buttons2">
+		<ePixmap position="50,659" size="900,50" pixmap="mega32/buttons/3colors.png" zPosition="2" alphatest="blend"/>
+		<widget position="100,668" size="210,21" name="red"    font="Regular;19" halign="left" backgroundColor="black" transparent="1" zPosition="1"/>
+		<widget position="340,668" size="210,21" name="green"  font="Regular;19" halign="left" backgroundColor="black" transparent="1" zPosition="1"/>
+		<widget position="580,668" size="210,21" name="yellow" font="Regular;19" halign="left" backgroundColor="black" transparent="1" zPosition="1"/>
+	</screen>
+
+	<screen name="3Buttons3">
+		<ePixmap position="50,659" size="1200,50" pixmap="mega32/buttons/3colors.png" zPosition="2" alphatest="blend"/>
+		<widget position="100,668" size="210,21" source="red" render="Label" font="Regular;19" halign="left" backgroundColor="black" transparent="1" zPosition="1"/>
+		<widget position="340,668" size="210,21" source="green" render="Label"  font="Regular;19" halign="left" backgroundColor="black" transparent="1" zPosition="1"/>
+		<widget position="580,668" size="210,21" source="yellow" render="Label" font="Regular;19" halign="left" backgroundColor="black" transparent="1" zPosition="1"/>
+	</screen>
+	
+	<screen name="3Buttons4">
+		<ePixmap position="50,659" size="1200,50" pixmap="mega32/buttons/3colors.png" zPosition="2" alphatest="blend"/>
+		<widget position="100,668" size="210,21" source="key_red" render="Label" font="Regular;19" halign="left" backgroundColor="black" transparent="1" zPosition="1"/>
+		<widget position="340,668" size="210,21" source="key_green" render="Label"  font="Regular;19" halign="left" backgroundColor="black" transparent="1" zPosition="1"/>
+		<widget position="580,668" size="210,21" source="key_yellow" render="Label" font="Regular;19" halign="left" backgroundColor="black" transparent="1" zPosition="1"/>
+	</screen>
+	
+	<screen name="3Buttons4RGB">
+		<ePixmap position="50,659" size="1200,50" pixmap="mega32/buttons/3colorsRGB.png" zPosition="2" alphatest="blend"/>
+		<widget position="100,668" size="210,21" source="key_red" render="Label" font="Regular;19" halign="left" backgroundColor="black" transparent="1" zPosition="1"/>
+		<widget position="340,668" size="210,21" source="key_green" render="Label"  font="Regular;19" halign="left" backgroundColor="black" transparent="1" zPosition="1"/>
+		<widget position="580,668" size="210,21" source="key_blue" render="Label" font="Regular;19" halign="left" backgroundColor="black" transparent="1" zPosition="1"/>
+	</screen>
+	
+	<screen name="2Buttons">
+		<ePixmap position="50,659" size="600,50" pixmap="mega32/buttons/2colors.png" zPosition="2" alphatest="blend"/>
+		<widget position="100,668" size="210,21" name="key_red"    font="Regular;19" halign="left" foregroundColor="white" backgroundColor="black" zPosition="1" transparent="1"/>
+		<widget position="340,668" size="210,21" name="key_green"  font="Regular;19" halign="left" foregroundColor="white" backgroundColor="black" zPosition="1" transparent="1"/>
+	</screen>
+
+	<screen name="2Buttons2">
+		<ePixmap position="50,659" size="600,50" pixmap="mega32/buttons/2colors.png" zPosition="2" alphatest="blend"/>
+		<widget position="100,668" size="210,21" name="red"    font="Regular;19" halign="left" backgroundColor="black" transparent="1" zPosition="1"/>
+		<widget position="340,668" size="210,21" name="green"  font="Regular;19" halign="left" backgroundColor="black" transparent="1" zPosition="1"/>
+	</screen>
+
+	<screen name="2Buttons3">
+		<ePixmap position="50,659" size="1200,50" pixmap="mega32/buttons/2colors.png" zPosition="2" alphatest="blend"/>
+		<widget position="100,668" size="210,21" source="red" render="Label" font="Regular;19" halign="left" backgroundColor="black" transparent="1" zPosition="1"/>
+		<widget position="340,668" size="210,21" source="green" render="Label"  font="Regular;19" halign="left" backgroundColor="black" transparent="1" zPosition="1"/>
+	</screen>
+	
+	<screen name="2Buttons4">
+		<ePixmap position="50,659" size="1200,50" pixmap="mega32/buttons/2colors.png" zPosition="2" alphatest="blend"/>
+		<widget position="100,668" size="210,21" source="key_red" render="Label" font="Regular;19" halign="left" backgroundColor="black" transparent="1" zPosition="1"/>
+		<widget position="340,668" size="210,21" source="key_green" render="Label"  font="Regular;19" halign="left" backgroundColor="black" transparent="1" zPosition="1"/>
+	</screen>
+	
+	<screen name="1Buttons">
+		<ePixmap position="50,659" size="300,50" pixmap="mega32/buttons/1colors.png" zPosition="2" alphatest="blend"/>
+		<widget position="100,668" size="210,21" name="key_red" font="Regular;19" halign="left" foregroundColor="white" backgroundColor="black" zPosition="1" transparent="1"/>
+	</screen>
+
+	<screen name="1Buttons2">
+		<ePixmap position="50,659" size="300,50" pixmap="mega32/buttons/1colors.png" zPosition="2" alphatest="blend"/>
+		<widget position="100,668" size="210,21" name="red"     font="Regular;19" halign="left" backgroundColor="black" transparent="1" zPosition="1"/>
+	</screen>
+
+	<screen name="1Buttons3">
+		<ePixmap position="50,659" size="1200,50" pixmap="mega32/buttons/1colors.png" zPosition="2" alphatest="blend"/>
+		<widget position="100,668" size="210,21" source="red" render="Label" font="Regular;19" halign="left" backgroundColor="black" transparent="1" zPosition="1"/>
+	</screen>
+	
+	<screen name="1Buttons4">
+		<ePixmap position="50,659" size="1200,50" pixmap="mega32/buttons/1colors.png" zPosition="2" alphatest="blend"/>
+		<widget position="100,668" size="210,21" source="key_red" render="Label" font="Regular;19" halign="left" backgroundColor="black" transparent="1" zPosition="1"/>
+	</screen>
+	
+	<!-- ButtonsW Templates -->
+	<screen name="4ButtonsW">
+		<ePixmap  pixmap="mega32/buttons/4colors.png" position="50,659" size="1200,50" zPosition="4" alphatest="blend" transparent="1"/>
+		<widget source="key_red"    render="Label"  position="100,668" zPosition="4" size="210,21" font="Regular;19" halign="left" backgroundColor="black" transparent="1"/>
+		<widget source="key_green"  render="Label"  position="340,668" zPosition="4" size="210,21" font="Regular;19" halign="left" backgroundColor="black" transparent="1"/>
+		<widget source="key_yellow" render="Label"  position="580,668" zPosition="4" size="210,21" font="Regular;19" halign="left" backgroundColor="black" transparent="1"/>
+		<widget source="key_blue"   render="Label"  position="820,668" zPosition="4" size="210,21" font="Regular;19" halign="left" backgroundColor="black" transparent="1"/>
+	</screen>
+
+	<screen name="3ButtonsW">
+		<ePixmap  pixmap="mega32/buttons/3colors.png" position="50,659" size="900,50" zPosition="4" alphatest="blend" transparent="1"/>
+		<widget source="key_red"    render="Label"  position="100,668" zPosition="4" size="210,21" font="Regular;19" halign="left" backgroundColor="black" transparent="1"/>
+		<widget source="key_green"  render="Label"  position="340,668" zPosition="4" size="210,21" font="Regular;19" halign="left" backgroundColor="black" transparent="1"/>
+		<widget source="key_yellow" render="Label"  position="580,668" zPosition="4" size="210,21" font="Regular;19" halign="left" backgroundColor="black" transparent="1"/>
+	</screen>
+
+	<screen name="2ButtonsW">
+		<ePixmap  pixmap="mega32/buttons/2colors.png" position="50,659" size="1200,50" zPosition="4" alphatest="blend" transparent="1"/>
+		<widget source="key_red"    render="Label"  position="100,668" zPosition="4" size="210,21" font="Regular;19" halign="left" backgroundColor="black" transparent="1"/>
+		<widget source="key_green"  render="Label"  position="340,668" zPosition="4" size="210,21" font="Regular;19" halign="left" backgroundColor="black" transparent="1"/>
+	</screen>
+
+	<screen name="1ButtonsW">
+		<ePixmap  pixmap="mega32/buttons/1colors.png" position="50,659" size="1200,50" zPosition="4" alphatest="blend" transparent="1"/>
+		<widget source="key_red"    render="Label"  position="100,668" zPosition="4" size="210,21" font="Regular;19" halign="left" backgroundColor="black" transparent="1"/>
+	</screen>
+
+	<screen name="menuHelp">
+		<ePixmap  position="1114,32" zPosition="1" size="108,15" pixmap="mega32/buttons/colors.png" alphatest="blend"/>
+		<eLabel text="Menu - Help" position="1113,42" size="110,30" font="Regular;20" halign="center" valign="center" foregroundColor="bluette" backgroundColor="#40000000" shadowColor="black" shadowOffset="-1,-1" zPosition="0"/>
+	</screen>
+
+	<screen name="menuList">
+		<ePixmap  position="1114,32" zPosition="1" size="108,15" pixmap="mega32/buttons/colors.png" alphatest="blend"/>
+		<eLabel text="Menu - List" position="1113,42" size="110,30" font="Regular;20" halign="center" valign="center" foregroundColor="bluette" backgroundColor="#40000000" shadowColor="black" shadowOffset="-1,-1" zPosition="0"/>
+	</screen>
+
+	<screen name="menuOption">
+		<ePixmap  position="1114,32" zPosition="1" size="108,15" pixmap="mega32/buttons/colors.png" alphatest="blend"/>
+		<eLabel text="Menu - Opt." position="1113,42" size="110,30" font="Regular;20" halign="center" valign="center" foregroundColor="bluette" backgroundColor="#40000000" shadowColor="black" shadowOffset="-1,-1" zPosition="0"/>
+	</screen>
+		
+	<screen name="menuInfo">
+		<ePixmap  position="1114,32" zPosition="1" size="108,15" pixmap="mega32/buttons/colors.png" alphatest="blend"/>
+		<eLabel text="Menu - Info" position="1113,42" size="110,30" font="Regular;20" halign="center" valign="center" foregroundColor="bluette" backgroundColor="#40000000" shadowColor="black" shadowOffset="-1,-1" zPosition="0"/>
+	</screen>
+
+	<screen name="tMenu">
+		<ePixmap  position="1114,32" zPosition="1" size="108,15" pixmap="mega32/buttons/colors.png" alphatest="blend"/>
+		<eLabel text="Menu" position="1113,42" size="110,30" font="Regular;20" halign="center" valign="center" foregroundColor="bluette" backgroundColor="#40000000" shadowColor="black" shadowOffset="-1,-1" zPosition="0"/>
+	</screen>
+
+	<screen name="tInfo">
+		<ePixmap  position="1114,32" zPosition="1" size="108,15" pixmap="mega32/buttons/colors.png" alphatest="blend"/>
+		<eLabel text="Info" position="1113,42" size="110,30" font="Regular;20" halign="center" valign="center" foregroundColor="bluette" backgroundColor="#40000000" shadowColor="black" shadowOffset="-1,-1" zPosition="0"/>
+	</screen>
+
+		<!-- Weather -->
+	<screen name="weatPanel">
+		<widget source="session.CurrentService" render="Pixmap" position="0,5" size="1280,62" pixmap="mega32blue/menu/wtpanel.png" zPosition="-1" transparent="1">
+			<convert type="EGWeather">Enable</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="session.CurrentService" render="EGWf" position="50,0" size="74,74" transparent="1" alphatest="blend">
+			<convert type="EGWeather">IconToday</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Label" position="130,10" size="200,30" font="Regular; 26" halign="left" foregroundColor="bluette" backgroundColor="#10101010" transparent="1" noWrap="1">
+			<convert type="EGWeather">City</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Label" position="130,42" size="180,25" font="Regular; 18" halign="left" foregroundColor="yellow" backgroundColor="#10101010" transparent="1">
+			<convert type="EGWeather">TextToday</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Label" position="300,13" size="150,50" font="Regular;40" halign="left" foregroundColor="red" backgroundColor="#10101010" transparent="1" noWrap="1" zPosition="1">
+			<convert type="EGWeather">Temperatura</convert>
+		</widget>
+		<widget source="session.CurrentService" render="EGWf" position="460,0" size="74,74" transparent="1" alphatest="blend">
+			<convert type="EGWeather">IconTomorrow</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Label" position="550,17" size="180,50" font="Regular; 18" halign="left" foregroundColor="yellow" backgroundColor="#10101010" transparent="1" noWrap="1">
+			<convert type="EGWeather">TextTomorrow</convert>
+		</widget>
+		<!-- Data
+		<widget source="global.CurrentTime" render="Label" position="730,13" size="340,50" zPosition="1" font="Regular;40" halign="right" backgroundColor="transpBlack" foregroundColor="#808080" transparent="1">
+			<convert type="ClockToText">Format:%d.%m.%Y</convert>
+		</widget>-->
+		<!-- Time
+		<widget source="global.CurrentTime" render="Label" position="905,13" size="290,50" zPosition="1" font="Regular;40"  halign="right" backgroundColor="black" foregroundColor="#808080" transparent="1">
+			<convert type="ClockToText">Format:%H:%M</convert>
+		</widget>	-->
+
+		<ePixmap position="0,5" size="1280,62" pixmap="mega32/menu/wtpanel.png" zPosition="-1" transparent="1" />
+		<widget alphatest="blend" render="MSNWeatherPixmap" position="135,14" size="46,46" source="session.MSNWeather" transparent="1" zPosition="5">
+			<convert type="MSNWeather">weathericon,current,/usr/share/enigma2/mega32/msn/,png</convert>
+		</widget>
+		<widget noWrap="1" backgroundColor="black" font="Regular; 28" foregroundColor="red" render="Label" position="55,18" size="75,37" source="session.MSNWeather" transparent="1" zPosition="8" halign="center">
+			<convert type="MSNWeather">temperature_current</convert>
+		</widget>
+		<widget alphatest="blend" render="MSNWeatherPixmap" position="578,16" size="42,42" source="session.MSNWeather" transparent="1" zPosition="5">
+			<convert type="MSNWeather">weathericon,day2,/usr/share/enigma2/mega32/msn/,png</convert>
+		</widget>
+		<widget noWrap="1" backgroundColor="black" font="Regular; 16" render="Label" position="410,25" size="110,26" source="session.MSNWeather" zPosition="3" halign="center" transparent="1">
+			<convert type="MSNWeather">weekday,day2</convert>
+		</widget>
+		<widget noWrap="1" backgroundColor="black" font="Regular; 16" render="Label" position="800,25" size="40,26" source="session.MSNWeather" zPosition="3" halign="center" transparent="1" foregroundColor="yellow">
+		<convert type="MSNWeather">temperature_high,day3</convert>
+			</widget>
+		<widget noWrap="1" backgroundColor="black" font="Regular; 16" render="Label" position="1178,25" size="40,26" source="session.MSNWeather" zPosition="3" halign="center" transparent="1" foregroundColor="bluette">
+			<convert type="MSNWeather">temperature_low,day4</convert>
+		</widget>
+		<widget alphatest="blend" render="MSNWeatherPixmap" position="850,16" size="42,42" source="session.MSNWeather" transparent="1" zPosition="5">
+			<convert type="MSNWeather">weathericon,day3,/usr/share/enigma2/mega32/msn/,png</convert>
+		</widget>
+		<widget noWrap="1" backgroundColor="black" font="Regular; 16" render="Label" position="966,25" size="110,26" source="session.MSNWeather" zPosition="3" halign="center" transparent="1">
+			<convert type="MSNWeather">weekday,day4</convert>
+		</widget>
+		<widget noWrap="1" backgroundColor="black" font="Regular; 16" render="Label" position="524,25" size="40,26" source="session.MSNWeather" zPosition="3" halign="center" transparent="1" foregroundColor="yellow">
+			<convert type="MSNWeather">temperature_high,day2</convert>
+		</widget>
+		<widget noWrap="1" backgroundColor="black" font="Regular; 16" render="Label" position="626,25" size="40,26" source="session.MSNWeather" zPosition="3" halign="center" transparent="1" foregroundColor="bluette">
+			<convert type="MSNWeather">temperature_low,day2</convert>
+		</widget>
+		<widget alphatest="blend" render="MSNWeatherPixmap" position="1129,16" size="42,42" source="session.MSNWeather" transparent="1" zPosition="5">
+			<convert type="MSNWeather">weathericon,day4,/usr/share/enigma2/mega32/msn/,png</convert>
+		</widget>
+		<widget noWrap="1" backgroundColor="black" font="Regular; 16" render="Label" position="685,25" size="110,26" source="session.MSNWeather" zPosition="3" halign="center" transparent="1">
+			<convert type="MSNWeather">weekday,day3</convert>
+		</widget>
+		<widget noWrap="1" backgroundColor="black" font="Regular; 16" render="Label" position="1082,25" size="40,26" source="session.MSNWeather" zPosition="3" halign="center" transparent="1" foregroundColor="yellow">
+			<convert type="MSNWeather">temperature_high,day4</convert>
+		</widget>
+		<widget noWrap="1" backgroundColor="black" font="Regular; 16" render="Label" position="900,25" size="40,26" source="session.MSNWeather" zPosition="3" halign="center" transparent="1" foregroundColor="bluette">
+			<convert type="MSNWeather">temperature_low,day3</convert>
+		</widget>
+		<widget backgroundColor="black" font="Regular; 16" foregroundColor="foreground" render="Label" position="203,15" size="200,62" source="session.MSNWeather" transparent="1" zPosition="8" halign="center">
+			<convert type="MSNWeather">observationpoint</convert>
+		</widget>
+	</screen>
+</skin>
